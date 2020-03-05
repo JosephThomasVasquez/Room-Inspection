@@ -1,5 +1,9 @@
+* {
+    font-family: 'Noto Sans', sans-serif;
+}
+
 .container {
-    width: 50%;
+    width: 25%;
     padding: 25% 0 0 0;
 }
 
@@ -8,3 +12,30 @@
     border-radius: 5px;
     width: 100%;
 }
+
+.room {
+    display: flex;
+    min-height: 5px;
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
+}
+
+.sub-text {
+    margin: 0;
+    padding: 5px 20px 0 0;
+    color: #bbbbbb;
+    font-size: 14px;
+}
+
+input:checked+p {
+    text-decoration: line-through;
+    text-decoration-color: rgb(0, 162, 173);
+  }
+
+p {
+    margin: 0;
+    padding: 5px 20px 0 0;
+    font-size: 14px;
+    font-weight: 200;
+    color: #00204a;
+  }

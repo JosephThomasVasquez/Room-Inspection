@@ -1,5 +1,18 @@
 <%- include('header') -%>
 
+<div class="container">
 <div class="header-box" id="heading">
     <h1><%= buildingTitle %></h1>
+
+    
+    <% roomList.forEach(function (room) { %>
+
+    <form action="/" method="post">
+        <div class="room">
+            <input type="checkbox" name="checkbox" value="<%= roomList %>" id=""></input>
+            <p><%= room.name %></p><span class="sub-text"><%= room.floor %></span>
+        </div>
+    </form>
+<% }) %>
+</div>
 </div>

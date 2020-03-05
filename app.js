@@ -6,8 +6,11 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
+
+//mongoose.connect("mongodb://localhost:27017/roomsDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 // const loginForm = document.getElementById('login-form');
 // const userLoginInput = document.getElementById('user-login');
@@ -25,10 +28,45 @@ const users = [
     }
 ];
 
-const rooms = '2F';
+
+
+// Building Schema
+const roomSchema = new mongoose.Schema({
+    name: String,
+    floor: String,
+    building: String
+});
+
+const Room = mongoose.model('Room', roomSchema);
+
+const room1 = new Room({
+    name: 'The Beach',
+    floor: '1F',
+    building: 'HQ'
+});
+
+const room2 = new Room({
+    name: 'Corridor Flats',
+    floor: '2F',
+    building: 'Left Wing'
+});
+
+const room3 = new Room({
+    name: 'Command Studio',
+    floor: '3F',
+    building: 'Right Wing'
+});
+
+const room4 = new Room({
+    name: 'The Rainfall',
+    floor: '4F',
+    building: 'Sky Tower'
+});
+
+const defaultRooms = [room1, room2, room3, room4];
 
 app.get('/', function (req, res) {
-    res.render('building', {buildingTitle: 'Building', roomList: rooms })
+    res.render('building', {buildingTitle: defaultRooms[0].building, roomList: defaultRooms })
 });
 
 let port = process.env.PORT;
